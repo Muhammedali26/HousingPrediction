@@ -1,0 +1,109 @@
+# Data Engineering Best Practices
+- Veri Pipeline Kuralları:
+  - Her veri akışı için logging mekanizması kur
+  - ETL süreçlerini modüler tasarla
+  - Veri kalite kontrollerini otomatize et
+  - Data lineage (veri soyağacı) takibi yap
+  - Pipeline performans metriklerini izle
+  - Retry mekanizmaları ekle
+  - Error handling sistematik olsun
+
+# Data Versioning ve Storage
+- Veri Versiyonlama:
+  - DVC (Data Version Control) kullan
+  - Her veri değişikliğini commit'le
+  - Feature store kullan
+  - Veri şemalarını version'la
+  - Data drift monitör et
+
+# Infrastructure ve Orchestration
+- Altyapı Yönetimi:
+  - Docker container'ları kullan
+  - CI/CD pipeline'ları kur
+  - Infrastructure as Code (IaC) uygula
+  - Airflow ile orchestration yap:
+    - DAG'ları modüler tasarla
+    - Task dependency'leri optimize et
+    - Retry ve timeout mekanizmaları ekle
+    - Sensor'ları etkin kullan
+    - Dynamic DAG generation uygula
+    - Custom operator'lar geliştir
+    - XCom ile task'lar arası veri paylaşımı yap
+    - Pool ve queue yönetimi ile kaynakları optimize et
+  - Auto-scaling mekanizmaları ekle
+
+# Learning & Development Strategy
+- Her Projede Teknoloji Öğrenimi:
+  - En az bir yeni enterprise tool kullan
+  - Küçük veri setlerinde bile modern stack dene
+  - Proof of concept yaklaşımı ile başla
+  - Basit projeleri enterprise araçlarla geliştir
+  - Öğrenilen her teknolojiyi dökümante et
+
+# Technology Practice Stack
+- Docker Practice:
+  - Projeleri containerize et
+  - Docker-compose ile servis yönetimi
+  - Container monitoring dene
+
+- Airflow Practice:
+  - ML pipeline'ları DAG'lar ile yönet
+  - Task dependencies kur
+  - Sensor ve operator kullanımı
+
+- PySpark Practice:
+  - Distributed computing mantığını öğren
+  - DataFrame operasyonlarını uygula
+  - SQL ve DataFrame API kullanımı
+
+# Data Quality ve Monitoring
+- Veri Kalitesi:
+  - Great Expectations ile veri doğrulama
+  - Anomali tespiti sistemi kur
+  - Data profiling otomatik yap
+  - Schema validation uygula
+  - Missing value tracking sistemi kur
+
+# Production ML Systems
+- MLOps Pratikleri:
+  - Model serving API'ları tasarla
+  - A/B testing altyapısı kur
+  - Model monitoring sistemi oluştur
+  - Feature store entegrasyonu yap
+  - Model registry kullan
+  - Automated retraining pipeline kur
+
+# Model Değerlendirme ve Metrik Kuralları
+- her model sonucunu yazdırırken RMSE'yi ortalama fiyata oranla göster
+- her model sonrası feature importance'yi göster
+- her model sonrası confusion matrix'i göster (sınıflandırma problemlerinde)
+- her model sonrası classification report'u göster (sınıflandırma problemlerinde)
+- her model sonrası roc_auc_score'u göster (sınıflandırma problemlerinde)
+- her model sonrası r2_score'u göster (regresyon problemlerinde)
+- her model sonrası cross_val_score'u göster
+- her model sonrası gridsearchcv sonuçlarını göster
+- her model sonrası final model performansını göster
+
+# Otomatik Sonuç Kaydetme Sistemi
+- Her model için timestamp ile sonuç klasörü oluştur:
+  - /models: Eğitilmiş modelleri pickle formatında sakla
+  - /plots: Performans grafiklerini PNG olarak kaydet
+  - /metrics: Metrikleri JSON formatında sakla
+  - /feature_importance: Özellik önem analizlerini kaydet
+- Her değerlendirme sonrası otomatik rapor oluştur
+- Modeller arası karşılaştırma tablosu oluştur
+
+# Model Eğitim ve Değerlendirme Prensipleri
+- Model sadece train verisi ile eğitilmeli
+- Model değerlendirmesi mutlaka test verisi ile yapılmalı
+- Predict yaparken test setini kullan
+- Train-test performans farkı büyükse (>0.1) overfitting kontrolü yap
+- Test setinde prediction vs actual karşılaştırması yap
+- Cross-validation ile model stabilitesini kontrol et
+
+# Veri Analizi (Opsiyonel)
+- Eğer veri segmentlere ayrılabiliyorsa:
+  - Her segment için ayrı model performansı değerlendir
+  - Segment bazlı hata analizini yap
+  - Segment geçişlerindeki performansı kontrol et
+  - Her segment için temel metrikleri kaydet
